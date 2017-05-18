@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<?php include('_includes/page_head.html');?>
+
+<body>
+	<div class="container">
+		<!--Navbar-->
+		<?php include('_includes/page_inmate_navbar.html');?>
+		<!--Navbar-->
+
+
+	</div>
+		
+</body>
+
+<!--Scripts for bootstrap working-->
+		<?php include('_includes/links_script.html');?>
+<!--Scripts for bootstrap working-->
+
+<script>	
+	$(document).ready(function() {
+		$('#testtable').DataTable();
+	} );	
+</script>
+
+
+<script src = "https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.js" ></script>
+<script src = "js/validator.js"></script>
+
+$up_stmt = "select ic.inmate_phone ,ic.parent_phone, od.destination, od.purpose, od.leaving_date, od.return_date, id.fullname from inmate_contacts as ic , outpass_details as od , inmate_details as id where id.admno = '".$_POST['adm_no']."' and od.admno = '".$_POST['adm_no']."' and ic.admno = '".$_POST['adm_no']."' and od.pass_no = '".$_POST['pass_no']."' ";
+			$up_stmt_sql = $connection->query($up_stmt);
+			$search_result =  $up_stmt_sql->fetch_all(MYSQLI_ASSOC);
+			var_dump($up_stmt_sql);

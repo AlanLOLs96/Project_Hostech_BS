@@ -1,0 +1,35 @@
+body
+{
+    padding-top: 70px;
+}
+
+@media (min-width: 1200px)
+{
+    .container
+    {
+        max-width: 1300px;
+    }
+}
+
+.buttonleft
+{
+    padding: 10px;
+}
+.buttonright
+{
+    padding: 10px;
+}
+
+select#exampleSelect1
+{
+    width: 335px;
+    padding: 5px;
+
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .175);
+            box-shadow: 0 0 0 rgba(0, 0, 0, .175);
+}
+
+.error {
+    color: red;
+}

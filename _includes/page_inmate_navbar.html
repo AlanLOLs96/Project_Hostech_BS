@@ -1,0 +1,54 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><?= $inmate_details['fullname']?></a>
+        </div>
+        <!-- Menu -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+           <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Outpass
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="inmate_home.php">Issue Outpass</a></li>
+                <li><a href="inmate_op_history_status.php">View Outpass History</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sick Leave
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="inmate_leave.php">Issue Leave</a></li>
+                <li><a href="inmate_leave_history.php">Leave History</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+             <a class="dropdown-toggle" data-toggle="dropdown" href="#">Complaints
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="inmate_complaints.php">Post Complaints</a></li>
+                <li><a href="inmate_complaints_history.php">Complaints History</a></li>
+              </ul>
+            </li>
+
+
+          </ul>
+          <!-- Right Side Menu-->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Options<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="common_logout.php">Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
