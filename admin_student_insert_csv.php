@@ -27,9 +27,11 @@ if(isset($_POST["submit"]))
 				$phone_parent = mysqli_real_escape_string($connection, $data[9]);
 				
 				$stmt = "insert into inmate_details values($admno,'$username',PASSWORD('$password'),'$fullname','$gender',$semester,'$branch',$roomno)" ;
+				//var_dump($stmt);
 				$sql  = $connection->query($stmt);
 
 				$stmt = "insert into inmate_contacts values($admno,$phone_personal,$phone_parent)";
+			//	var_dump($stmt);
 				$sql_ph = $connection->query($stmt);
 			}
 			fclose($handle);

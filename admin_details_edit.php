@@ -7,8 +7,12 @@ include_once('_includes/php/functions.php');
 if($_SERVER['REQUEST_METHOD']=="POST")
 {
 	$trigger = 0;
+	if(isset($_POST['incr_sem'])){
+		$stmt = 'update inmate_details set semester = semester + 1 ';
+		$sql = $connection->query($stmt);
+	}
 	if(isset($_POST['remove_passout'])){
-		$stmt = 'delete from inmate_details where semester = "S8" ';
+		$stmt = 'delete from inmate_details where semester >= 8 ';
 		$sql = $connection->query($stmt);
 	}
 	if(isset($_POST['remove_sem'])){
@@ -47,7 +51,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 				<input type="hidden" name="remove_inmate_confirm" value= "1" >
 				<button class="btn btn-warning sbtn" ><span class="glyphicon glyphicon-ok"></span></button>
 			</form>
-			</td>';
+		</td>';
 		echo "</tr>";
 
 	}
@@ -73,6 +77,19 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 			</div>
 			<div class="panel-body">
 				<ul class="list-group">
+					<li class="list-group-item">
+						<div class="row">
+							<div class="col-md-6">
+								<h4>Increment Sem List      </h4>
+							</div>
+							<div class="col-md-6">
+								<form action="" method="post">
+									<input type="hidden" name="incr_sem" value= "1" >
+									<button id="incr" class="btn btn-primary btn-block">INCREMENT</button>
+								</form>								
+							</div>
+						</div>
+					</li>
 					<li class="list-group-item">
 						<div class="row">
 							<div class="col-md-6">
@@ -165,6 +182,17 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 
 <script>	
 	$(document).ready(function() {
+		$('#incr').click(function(){			
+			new PNotify(
+			{
+				title: 'All semester incremented',
+				text: 'Action completed successfully',
+				styling: "bootstrap3",
+				delay: 600,
+				type: "success"
+			});
+			submitForm();
+		});	
 		$('.sbtn').click(function(){			
 			new PNotify(
 			{

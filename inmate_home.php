@@ -53,142 +53,142 @@ if($_SERVER['REQUEST_METHOD']=="POST")
       </div>
       <div class="panel-body">
 
-      <!--Alert Function-->
-      <?php if($_SERVER['REQUEST_METHOD']=='POST') alertmessage($alert_trigger,'Outpass Issued Successfully');  ?>
-      <!--Alert Function-->
+        <!--Alert Function-->
+        <?php if($_SERVER['REQUEST_METHOD']=='POST') alertmessage($alert_trigger,'Outpass Issued Successfully');  ?>
+        <!--Alert Function-->
 
-      <?php if(checkForPendingOutpass($inmate_details['admno'],$connection)!=0)
-      {
+        <?php if(checkForPendingOutpass($inmate_details['admno'],$connection)!=0)
+        {
           echo '<div class="alert alert-warning" id="dynamicalert">
           <strong>Hello</strong> You can only issue new outpass after retrun confirmation of the currently issued one
-          </div>
-          <script>
+        </div>
+        <script>
           $(document).ready(function(){
-                 $("input").prop("disabled", true);
-               });     
-          </script>
-          ';
-      }
-       ?>
+           $("input").prop("disabled", true);
+         });     
+       </script>
+       ';
+     }
+     ?>
 
-      <form class="well form-horizontal"  id='opissueform' action="inmate_home.php" method="post" name="outpass_issue" autocomplete="on"  >
-        <fieldset>
-         <div class="form-group">
-          <label class="col-md-4 control-label">Admission No</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input  name="admno" placeholder="Admission No" class="form-control" value = <?= $inmate_details['admno']?> type="text">
-            </div>
+     <form class="well form-horizontal"  id='opissueform' action="inmate_home.php" method="post" name="outpass_issue" autocomplete="on"  >
+      <fieldset>
+       <div class="form-group">
+        <label class="col-md-4 control-label">Admission No</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="admno" placeholder="Admission No" class="form-control" value = <?= $inmate_details['admno']?> type="text">
           </div>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Name</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-              <input  name="name" placeholder="Full Name" class="form-control" value = '<?php echo $inmate_details['fullname'] ?>' type="text"  required>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Name</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="name" placeholder="Full Name" class="form-control" value = '<?php echo $inmate_details['fullname'] ?>' type="text"  required>
           </div>
         </div>
+      </div>
 
-        <!-- Date input-->
+      <!-- Date input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" >Issue Date</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input name="issue_date" value= '<?= date('Y-m-d'); ?>'  min = '<?= date('Y-m-d'); ?>' class="form-control"  type="date"  required>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Issue Date</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            <input name="issue_date" value= '<?= date('Y-m-d'); ?>'  min = '<?= date('Y-m-d'); ?>' class="form-control"  type="date"  required>
           </div>
         </div>
+      </div>
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Destination</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-              <input name="destination" placeholder="Destination" class="form-control"  type="text" required>
-            </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Destination</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+            <input name="destination" placeholder="Destination" class="form-control"  type="text" required>
           </div>
         </div>
+      </div>
 
-        <!-- Text input-->
-        <div class="form-group">
-          <label class="col-md-4 control-label">Purpose</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
-              <input name="purpose" placeholder="Purpose" class="form-control"  type="text" required>
-            </div>
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label">Purpose</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+            <input name="purpose" placeholder="Purpose" class="form-control"  type="text" required>
           </div>
         </div>
+      </div>
 
-        <!-- Date input-->
+      <!-- Date input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" >Leaving Date</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input name="leaving_date" id="sdate"  class="form-control"  type="date" min = '<?= date('Y-m-d'); ?>' required>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Leaving Date</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            <input name="leaving_date" id="sdate"  class="form-control"  type="date" min = '<?= date('Y-m-d'); ?>' required>
           </div>
         </div>
+      </div>
 
-        <!-- Leaving Time-->
+      <!-- Leaving Time-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Leaving Time</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-              <input name="leaving_time" id="leavetime" placeholder="Leaving Time" class="form-control" min = '<?= date("H:i:00");?>' type="time"  required>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Leaving Time</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            <input name="leaving_time" id="leavetime" placeholder="Leaving Time" class="form-control" min = '<?= date("H:i:00");?>' type="time"  required>
           </div>
         </div>
+      </div>
 
-        <!-- Date input-->
+      <!-- Date input-->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label" >Return Date</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-              <input name="return_date" id="bdate" class="form-control"  type="date" onfocus="setDate()" required>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Return Date</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            <input name="return_date" id="bdate" class="form-control"  type="date" onfocus="setDate()" required>
           </div>
         </div>
+      </div>
 
-        <!-- Time Input -->
+      <!-- Time Input -->
 
-        <div class="form-group">
-          <label class="col-md-4 control-label">Return Time</label>
-          <div class="col-md-4 inputGroupContainer">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
-              <input name="return_time" id="returntime" placeholder="Leaving Time" class="form-control"  type="time" onfocus="setTime()" required>
-            </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Return Time</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            <input name="return_time" id="returntime" placeholder="Return Time" class="form-control"  type="time" onfocus="setTime()" required>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-6 inputGroupContainer">
-            <div class="form-group text-right buttonright">
-              <input class="btn btn-primary" type="submit" value="Submit">
-            </div>
-          </div>
-          <div class="col-md-6 inputGroupContainer">
-            <div class="form-group text-left buttonleft">
-              <input class="btn btn-primary" type="reset" value="Reset">
-            </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 inputGroupContainer">
+          <div class="form-group text-right buttonright">
+            <input class="btn btn-primary" type="submit" value="Submit">
           </div>
         </div>
-      </fieldset>
-    </form>
-  </div>
+        <div class="col-md-6 inputGroupContainer">
+          <div class="form-group text-left buttonleft">
+            <input class="btn btn-primary" type="reset" value="Reset">
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
 </div>
 </body>
 
@@ -206,15 +206,20 @@ if($_SERVER['REQUEST_METHOD']=="POST")
   function setTime()
   {
     var reset = '00:00';
+    var today = new Date();
+    today.toISOString().substring(0, 10);
     var dateleave = document.getElementById('sdate').value;
     var dateret = document.getElementById('bdate').value; 
     var time = document.getElementById('leavetime').value;
     console.log(time);
+    if(dateleave!=today)
+      document.getElementById('leavetime').min = reset;
     if (dateleave == dateret)
       document.getElementById('returntime').min = time;
     else
       document.getElementById('returntime').min = reset;
   }
+
 </script>
 
 </html>

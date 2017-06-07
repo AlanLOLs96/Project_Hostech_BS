@@ -25,7 +25,7 @@ function printresult($arraylist){
 			echo '<td><button class="btn btn-success" style="display: -webkit-inline-box;"><span class="glyphicon glyphicon-eye-open"></span></button>
 			<form action="common_actions_controller.php" method="post" style="display: -webkit-inline-box;" >
 				<input type="hidden" name="pass_no" value= "'.$hiddenvar.'" >
-				<button name="cancel_op" type="submit" class="btn btn-info" value = 1 ><span class="glyphicon glyphicon-remove"></span></button>
+				<button name="cancel_op" type="submit" title="Click here to cancel request" class="btn btn-info" value = 1 ><span class="glyphicon glyphicon-remove"></span></button>
 				</form></td>';
 		}
 		else
@@ -33,7 +33,7 @@ function printresult($arraylist){
 			echo '<td>
 			<form action="common_actions_controller.php" method="post" >
 				<input type="hidden" name="pass_no" value= "'.$hiddenvar.'" >
-				<button name="cancel_op" type="submit" class="btn btn-info" value = 1 >CANCEL REQUEST</button>
+				<button name="cancel_op" type="submit" title="Click here to cancel request" class="btn btn-info" value = 1 >CANCEL REQUEST</button>
 			</form>
 		</td>';
 	}

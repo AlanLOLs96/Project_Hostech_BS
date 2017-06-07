@@ -80,14 +80,21 @@ function calcFoodCount($connection)
 	$stmt_sql = $connection->query($stmt);
 	$neutral = mysqli_fetch_row($stmt_sql);
 
-	var_dump((int)$neutral[0]);
+	//var_dump("neutral ".(int)$neutral[0]);
+//changer
+	$stmt = "select count(*) from outpass_details where  warden_approval = 1 and leaving_date <= '".$date."' and return_confirm = '".$date."' ";
+	$stmt_sql = $connection->query($stmt);
+	$coming = mysqli_fetch_row($stmt_sql);
+
+	//var_dump("comging ".(int)$coming[0]);
+//changer
 
 
 	$stmt = "select count(*) from outpass_details where warden_approval = 1 and leaving_date <= '".$date."' and return_confirm is null";
 	$stmt_sql = $connection->query($stmt);
 	$goingnum = mysqli_fetch_row($stmt_sql);
 
-	var_dump((int)$goingnum[0]);
+	//var_dump("gone/going students ".(int)$goingnum[0]);
 
 	//$stmt = "select count(*) from outpass_details where return_confirm = '".$date."' and leaving_date != '".$date."'";
 	//$stmt_sql = $connection->query($stmt);
@@ -98,7 +105,7 @@ function calcFoodCount($connection)
 	//var_dump(date('Y-m-d'));
 
 	//$val =   3000-((int)$goingnum[0])+((int)$comingnum[0]-(int)$neutral[0]);
-	$val =   3000-((int)$goingnum[0]-(int)$neutral[0]);
+	$val =   3000-(int)$goingnum[0]-(int)$neutral[0]+(int)$coming[0];
 
 	if($val>3000)
 		return 3000;

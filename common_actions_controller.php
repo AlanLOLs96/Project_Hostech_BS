@@ -17,7 +17,7 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 		//echo $msgstring;
 		//echo $phonenumbers;
 
-		//sendWay2SMS ( '9544867362' , '9544867362' , $phonenumbers , $msgstring);		
+		 //sendWay2SMS ( '8281091385' , 'anju2024' , $phonenumbers , $msgstring);		
 		unset($_POST['approve']);
 		header("location:admin_home.php");
 	}
@@ -31,21 +31,21 @@ if($_SERVER['REQUEST_METHOD']=="POST")
 		//echo $msgstring;
 		//echo $phonenumbers;
 
-		//sendWay2SMS ( '9544867362' , '9544867362' , $phonenumbers , $msgstring);		
+		 //sendWay2SMS ( '8281091385' , 'anju2024' , $phonenumbers , $msgstring);		
 
 		unset($_POST['reject']);
 		header("location:admin_home.php");
 
 
 	}
-	if (isset($_POST['sendwarning'])) {
+	if (isset($_POST[' //sendWarning'])) {
 
 		$msgstring = generateWarningSMS($_POST["pass_no"],$_POST["adm_no"],$connection);
 		$phonenumbers = getNumbers($_POST["adm_no"],$connection);
 
-		//sendWay2SMS ( '9656331482' , 'alanlal123' , $phonenumbers , $msgstring);		
+		 //sendWay2SMS ( '8281091385' , 'anju2024' , $phonenumbers , $msgstring);		
 
-		unset($_POST['sendwarning']);
+		unset($_POST[' //sendWarning']);
 		header("location:admin_op_return.php");
 
 	}
